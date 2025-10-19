@@ -120,6 +120,12 @@ fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
                 )
             }
         }
+        if (gameUiState.isGameOver) {
+            FinalScoreDialog(
+                score = gameUiState.score,
+                onPlayAgain = { gameViewModel.resetGame() }
+            )
+        }
 
         GameStatus(score = gameUiState.score, modifier = Modifier.padding(20.dp))
     }
@@ -203,6 +209,7 @@ fun GameLayout( currentScrambledWord: String, isGuessWrong: Boolean,userGuess: S
                 )
             )
         }
+
     }
 }
 
